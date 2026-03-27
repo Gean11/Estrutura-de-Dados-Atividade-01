@@ -1,0 +1,35 @@
+Exercício: Encontrando Produtos Complementares em um Carrinho de Compras
+
+#include <stdio.h>
+
+int* buscarPar(int valores[], int tamanho, int alvo) {
+    static int resposta[2];
+    
+    for (int x = 0; x < tamanho; x++) {
+        for (int y = x + 1; y < tamanho; y++) {
+            if (valores[x] + valores[y] == alvo) {
+                resposta[0] = x;
+                resposta[1] = y;
+                return resposta;
+            }
+        }
+    }
+
+    return NULL; 
+}
+
+int main() {
+    int lista[] = {30, 30, 25, 45, 65};
+    int objetivo = 60;
+    int tamanho = sizeof(lista) / sizeof(lista[0]);
+
+    int* resultado = buscarPar(lista, tamanho, objetivo);
+
+    if (resultado != NULL) {
+        printf("Valores encontrados: [%d, %d]\n", resultado[0], resultado[1]);
+    } else {
+        printf("Não é possível forma par.\n");
+    }
+
+    return 0;
+}
