@@ -1,0 +1,30 @@
+Exercício: Análise de Popularidade de Músicas com Soma de Reproduções Consecutivas
+
+#include <stdio.h>
+
+int maiorParConsecutivo(int dados[], int qtd) {
+    int maiorTotal = 0;
+
+    for (int dia = 0; dia < qtd - 1; dia++) {
+        int somaDias = dados[dia] + dados[dia + 1];
+
+        if (somaDias > maiorTotal) {
+            maiorTotal = somaDias;
+        }
+    }
+
+    return maiorTotal;
+}
+
+int main() {
+    int tocadas[] = {200, 250, 350, 550, 750, 955};
+    int tamanho = sizeof(tocadas) / sizeof(tocadas[0]);
+
+    int resultado = maiorParConsecutivo(tocadas, tamanho);
+
+    printf("Valor mais alto encontrado atráves da soma consecutiva: %d\n", resultado);
+
+    return 0;
+}
+
+
